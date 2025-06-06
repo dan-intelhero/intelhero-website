@@ -1,7 +1,23 @@
 {
   "name": "intelhero-website",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Official website for IntelHero Scout browser extension",
   "private": true,
+  "homepage": "https://intelhero.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/intelhero/intelhero-website.git"
+  },
+  "keywords": [
+    "intelhero",
+    "scout",
+    "browser-extension",
+    "multi-site-search",
+    "productivity",
+    "web-research"
+  ],
+  "author": "IntelHero",
+  "license": "All Rights Reserved",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
