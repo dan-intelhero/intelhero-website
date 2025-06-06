@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://intelhero.com'),
   title: "IntelHero Scout - Multi-Site Search Browser Extension",
   description: "Transform your web research with IntelHero Scout. Search across Google, YouTube, Reddit, Wikipedia, and more with a single query. Fast, smart, and free.",
   keywords: ["browser extension", "multi-site search", "web research", "productivity", "Chrome extension", "Edge extension"],

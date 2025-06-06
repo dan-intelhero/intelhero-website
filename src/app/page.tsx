@@ -30,7 +30,8 @@ export default function Home() {
       } else {
         setMessage(data.error || 'Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch (err) {
+      console.error('Newsletter signup error:', err);
       setMessage('Network error. Please try again.');
     } finally {
       setIsSubscribing(false);

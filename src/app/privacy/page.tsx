@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Privacy() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
@@ -10,12 +12,12 @@ export default function Privacy() {
               </div>
               <span className="text-white font-bold text-xl">IntelHero</span>
             </div>
-            <a
+            <Link
               href="/"
               className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200"
             >
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
@@ -80,7 +82,7 @@ export default function Privacy() {
                 <li>• <strong>tabs</strong>: To open search results in new tabs</li>
               </ul>
               <p className="text-gray-300 mt-4">
-                These permissions are used solely for the extension's functionality and not for data collection.
+                These permissions are used solely for the extension&apos;s functionality and not for data collection.
               </p>
             </section>
 
