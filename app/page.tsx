@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-blue-900 dark:bg-slate-900 dark:text-teal-500">
