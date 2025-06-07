@@ -67,7 +67,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-6 bg-teal-100 rounded-lg">
             <h3 className="text-xl font-semibold mb-4">Step 1</h3>
-            <p>Connect your competitors' websites.</p>
+            <p>Connect your competitors&apos; websites.</p>
           </div>
           <div className="p-6 bg-teal-100 rounded-lg">
             <h3 className="text-xl font-semibold mb-4">Step 2</h3>
