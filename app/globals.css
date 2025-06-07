@@ -1,9 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-dark-teal: #154a54;
+  --color-light-teal: #0495af;
+  --color-secondary-gray: #f0f2f5;
+  --color-text-primary: #154a54;
+  --color-text-secondary: #4a5568;
+  --color-background: #ffffff;
+  --color-card-background: #ffffff;
+  --color-border: #e9ecef;
+  --color-header-background: #e9ecef;
 }
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Utility classes for project colors */
+.bg-dark-teal { background-color: var(--color-dark-teal); }
+.bg-light-teal { background-color: var(--color-light-teal); }
+.bg-secondary-gray { background-color: var(--color-secondary-gray); }
+.bg-header { background-color: var(--color-header-background); }
+.bg-card { background-color: var(--color-card-background); }
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.border-custom { border-color: var(--color-border); }
 
 @theme inline {
   --color-background: var(--background);
