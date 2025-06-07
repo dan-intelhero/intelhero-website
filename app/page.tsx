@@ -83,8 +83,8 @@ export default function Home() {
               Keyboard Shortcuts
             </h3>
             <p className="text-secondary">
-              Lightning-fast access with single-letter shortcuts. Type 'a' for
-              Google, 'b' for YouTube, and more.
+              Lightning-fast access with single-letter shortcuts. Type &apos;a&apos; for
+              Google, &apos;b&apos; for YouTube, and more.
             </p>
           </div>
           <div className="p-6 bg-card rounded-lg border border-custom shadow-sm">
