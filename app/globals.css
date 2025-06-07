@@ -12,18 +12,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply bg-white text-blue-900 dark:bg-slate-900 dark:text-teal-500;
+  @apply bg-white text-blue-900;
   font-family: 'Inter', sans-serif;
 }

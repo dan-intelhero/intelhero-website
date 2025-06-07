@@ -1,5 +1,4 @@
 import "./globals.css";
-import DarkModeToggle from "./DarkModeToggle";
 
 // import { Geist, Geist_Mono } from "next/font/google";
 // Font import removed due to missing export in Next.js 15.3.3
@@ -42,7 +41,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <DarkModeToggle />
         {children}
       </body>
     </html>
