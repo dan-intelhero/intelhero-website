@@ -1,5 +1,6 @@
-import Image from 'next/image';
+import Link from 'next/link';
 import styles from './page.module.css';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -31,8 +32,8 @@ export default function Home() {
             <Image
               src="/scout-screenshot.png"
               alt="Scout Extension Screenshot"
-              width={600}
-              height={400}
+              width={800}
+              height={600}
               className={styles.scoutImage}
             />
           </div>
@@ -48,7 +49,13 @@ export default function Home() {
               <a href="#" className={styles.scoutStoreLink} target="_blank" rel="noopener noreferrer">
                 Get it on Chrome Extension Store
               </a>
+              {/* <a href="#" className={styles.scoutStoreLink} target="_blank" rel="noopener noreferrer">
+                Get it on Edge Add-ons
+              </a> */}
             </div>
+            {/* <div className={styles.scoutVideoWrapper}>
+              <iframe src="https://www.youtube.com/embed/your-tutorial-video" title="Scout Tutorial" frameBorder="0" allowFullScreen></iframe>
+            </div> */}
           </div>
         </div>
       </section>
@@ -76,8 +83,8 @@ export default function Home() {
             <Image
               src="/globe.svg"
               alt="IntelHero Monitoring Graphic"
-              width={260}
-              height={260}
+              width={400}
+              height={400}
               className={styles.intelHeroGraphic}
             />
           </div>
@@ -115,14 +122,14 @@ export default function Home() {
             <Image
               src="/mascot.png"
               alt="IntelHero Mascot"
-              width={135}
-              height={153}
+              width={50}
+              height={50}
               className={styles.footerMascot}
             />
             <span className={styles.footerTitle}>IntelHero</span>
           </div>
           <div className={styles.footerLinks}>
-            <a href="/privacy" className={styles.footerLink}>Privacy</a>
+            <Link href="/privacy" className={styles.footerLink}>Privacy</Link>
           </div>
           <div className={styles.footerCopyright}>
             &copy; {new Date().getFullYear()} IntelHero. All rights reserved.
