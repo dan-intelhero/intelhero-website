@@ -1,0 +1,46 @@
+{
+  "messages": [
+    {
+      "id": 1,
+      "type": "patrol_report",
+      "priority": "high",
+      "timestamp": "2024-01-15T14:30:00Z",
+      "sender": "Scout Alpha",
+      "recipient": "Base Command",
+      "location": {
+        "latitude": 40.7128,
+        "longitude": -74.0060
+      },
+      "content": "Enemy movement detected in sector 7. Approximately 20 units moving northeast.",
+      "status": "delivered"
+    },
+    {
+      "id": 2,
+      "type": "status_update",
+      "priority": "medium",
+      "timestamp": "2024-01-15T15:45:00Z",
+      "sender": "Scout Beta",
+      "recipient": "Base Command",
+      "location": {
+        "latitude": 40.7589,
+        "longitude": -73.9851
+      },
+      "content": "Position secured. All clear in assigned area. Continuing patrol route.",
+      "status": "delivered"
+    },
+    {
+      "id": 3,
+      "type": "supply_request",
+      "priority": "low",
+      "timestamp": "2024-01-15T16:20:00Z",
+      "sender": "Scout Charlie",
+      "recipient": "Supply Division",
+      "location": {
+        "latitude": 40.7505,
+        "longitude": -73.9934
+      },
+      "content": "Requesting resupply of rations and water. Current supplies at 30%.",
+      "status": "pending"
+    }
+  ]
+}
