@@ -1,46 +1,48 @@
 {
   "messages": [
     {
-      "id": 1,
-      "type": "patrol_report",
-      "priority": "high",
-      "timestamp": "2024-01-15T14:30:00Z",
-      "sender": "Scout Alpha",
-      "recipient": "Base Command",
-      "location": {
-        "latitude": 40.7128,
-        "longitude": -74.0060
-      },
-      "content": "Enemy movement detected in sector 7. Approximately 20 units moving northeast.",
-      "status": "delivered"
+      "id": "competitor-monitoring-launch-2025",
+      "type": "info",
+      "title": "🚀 Monitor Your Competitors",
+      "message": "Want to monitor your competitors automatically? <strong>Sign up for early access</strong> to IntelHero's advanced competitor intelligence features.",
+      "actionText": "Get Early Access",
+      "actionUrl": "https://intelhero.com/early-access?utm_source=scout&utm_medium=popup&utm_campaign=competitor_monitoring",
+      "priority": 1,
+      "expiresAt": "2025-12-31T23:59:59Z",
+      "conditions": {
+        "showAfterInstallDays": 1,
+        "maxDisplays": 3
+      }
     },
     {
-      "id": 2,
-      "type": "status_update",
-      "priority": "medium",
-      "timestamp": "2024-01-15T15:45:00Z",
-      "sender": "Scout Beta",
-      "recipient": "Base Command",
-      "location": {
-        "latitude": 40.7589,
-        "longitude": -73.9851
-      },
-      "content": "Position secured. All clear in assigned area. Continuing patrol route.",
-      "status": "delivered"
+      "id": "feedback-request-june-2025",
+      "type": "success",
+      "title": "💬 Help Us Improve",
+      "message": "Loving IntelHero Scout? Your feedback helps us make it even better for competitive intelligence research!",
+      "actionText": "Share Feedback",
+      "actionUrl": "mailto:dan@intelhero.com?subject=IntelHero Scout Feedback&body=Hi Dan, I've been using IntelHero Scout and wanted to share some feedback:",
+      "priority": 2,
+      "expiresAt": "2025-08-31T23:59:59Z",
+      "conditions": {
+        "showAfterInstallDays": 7,
+        "maxDisplays": 1
+      }
     },
     {
-      "id": 3,
-      "type": "supply_request",
-      "priority": "low",
-      "timestamp": "2024-01-15T16:20:00Z",
-      "sender": "Scout Charlie",
-      "recipient": "Supply Division",
-      "location": {
-        "latitude": 40.7505,
-        "longitude": -73.9934
-      },
-      "content": "Requesting resupply of rations and water. Current supplies at 30%.",
-      "status": "pending"
+      "id": "chrome-store-review-2025",
+      "type": "success", 
+      "title": "⭐ Rate IntelHero Scout",
+      "message": "If you're enjoying IntelHero Scout's multi-site search capabilities, please consider leaving a review on the Chrome Web Store!",
+      "actionText": "Leave Review",
+      "actionUrl": "https://chrome.google.com/webstore/detail/intelhero-scout/YOUR_EXTENSION_ID",
+      "priority": 3,
+      "expiresAt": "2025-12-31T23:59:59Z",
+      "conditions": {
+        "showAfterInstallDays": 14,
+        "maxDisplays": 1
+      }
     }
-  ]
+  ],
+  "version": "1.0",
+  "lastUpdated": "2025-06-16T12:00:00Z"
 }
