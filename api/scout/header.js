@@ -30,12 +30,12 @@ export default function handler(req, res) {
 
     // Optional: Add dynamic content based on date/time
     const now = new Date();
-    const isLaunchWeek = now >= new Date('2025-07-15') && now <= new Date('2025-07-22');
+    const isLaunchWeek = now >= new Date('2025-06-15') && now <= new Date('2025-07-22');
     
     if (isLaunchWeek) {
       headerContent.header.tagline = {
-        text: "🚀 IntelHero is live! Monitor what matters.",
-        link: "https://intelhero.com/launch"
+        text: "Welcome to Scout! Visit IntelHero to learn more.",
+        link: "https://intelhero.com/"
       };
     }
 
