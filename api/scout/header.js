@@ -2,10 +2,10 @@
 // Deployed on Vercel for intelhero.com
 
 export default function handler(req, res) {
-  // Set CORS headers for all requests
+  // Set CORS headers for all requests (including OPTIONS preflight)
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Cache-Control');
   
   // Handle preflight OPTIONS request
   if (req.method === 'OPTIONS') {
