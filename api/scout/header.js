@@ -2,17 +2,22 @@
 // Deployed on Vercel for intelhero.com
 
 export default function handler(req, res) {
-  // Only allow GET requests
+  // Set CORS headers for all requests
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
+  // Handle preflight OPTIONS request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
+  // Only allow GET requests for actual content
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    // Set CORS headers for extension access
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    
     // Set cache headers (cache for 1 hour)
     res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
     
@@ -30,12 +35,12 @@ export default function handler(req, res) {
 
     // Optional: Add dynamic content based on date/time
     const now = new Date();
-    const isLaunchWeek = now >= new Date('2025-06-15') && now <= new Date('2025-07-22');
+    const isLaunchWeek = now >= new Date('2025-07-15') && now <= new Date('2025-07-22');
     
     if (isLaunchWeek) {
       headerContent.header.tagline = {
-        text: "Welcome to Scout! Visit IntelHero to learn more.",
-        link: "https://intelhero.com/"
+        text: "🚀 IntelHero is live! Monitor what matters.",
+        link: "https://intelhero.com/launch"
       };
     }
 
