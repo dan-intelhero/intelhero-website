@@ -61,3 +61,19 @@ export const trackPageVisit = (pageName: string) => {
     label: pageName,
   });
 };
+
+export const trackVideoPlay = (videoTitle: string) => {
+  event({
+    action: 'video_play',
+    category: 'engagement',
+    label: videoTitle,
+  });
+};
+
+export const trackVideoComplete = (videoTitle: string) => {
+  event({
+    action: 'video_complete',
+    category: 'engagement',
+    label: videoTitle,
+  });
+};

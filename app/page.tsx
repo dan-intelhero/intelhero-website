@@ -4,9 +4,13 @@ import Link from 'next/link';
 import styles from './page.module.css';
 import Image from 'next/image';
 import { trackButtonClick, trackSignup, trackPageVisit } from './lib/gtag';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
   useEffect(() => {
     // Track page visit when component mounts
     trackPageVisit('home');
@@ -16,11 +20,39 @@ export default function Home() {
     trackButtonClick('scout_chrome_store');
   };
 
-  const handleEarlyAccessSubmit = (e: React.FormEvent) => {
+  const handleVideoClick = () => {
+    setIsVideoModalOpen(true);
+    trackButtonClick('scout_video_play');
+  };
+
+  const handleEarlyAccessSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    trackSignup();
-    // Add your form submission logic here
-    console.log('Early access form submitted');
+    setIsSubmitting(true);
+    setSubmitMessage('');
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch('/api/early-access', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        trackSignup();
+        setSubmitMessage(data.message);
+        form.reset();
+      } else {
+        setSubmitMessage(data.error || 'Oops! There was a problem. Please try again.');
+      }
+    } catch (error) {
+      setSubmitMessage('Oops! There was a problem. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <div className="min-h-screen bg-secondary-gray text-primary flex flex-col">
@@ -47,42 +79,91 @@ export default function Home() {
       {/* Section 2: Introduce Scout */}
       <section className={styles.scoutSection}>
         <div className={styles.scoutContent}>
-          <div className={styles.scoutImageWrapper}>
-            <Image
-              src="/scout-screenshot.png"
-              alt="Scout Extension Screenshot"
-              width={800}
-              height={600}
-              className={styles.scoutImage}
-            />
-          </div>
-          <div className={styles.scoutInfo}>
-            <h2 className={styles.scoutTitle}>Meet Scout</h2>
-            <ul className={styles.scoutFeatures}>
-              <li>Instantly search across Google, YouTube, Reddit, Wikipedia, and more</li>
-              <li>Lightning-fast keyboard shortcuts for power users</li>
-              <li>Right-click context menu for quick searches</li>
-              <li>Beautiful dark mode and seamless sync across devices</li>
-            </ul>
-            <div className={styles.scoutLinks}>
-              <a 
-                href="#" 
-                className={styles.scoutStoreLink} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={handleScoutClick}
-              >
-                Get it on Chrome Extension Store
-              </a>
-              {/* <a href="#" className={styles.scoutStoreLink} target="_blank" rel="noopener noreferrer">
-                Get it on Edge Add-ons
-              </a> */}
+          {/* Video Preview - Centered and 2/3 size */}
+          <div className={styles.scoutVideoContainer}>
+            <div className={styles.videoPreviewWrapper} onClick={handleVideoClick}>
+              <Image
+                src="/promo1.png"
+                alt="Scout Extension Demo - Click to Play"
+                width={800}
+                height={450}
+                className={styles.videoPreview}
+              />
+              <div className={styles.playButton}>
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                  <circle cx="30" cy="30" r="30" fill="rgba(0, 0, 0, 0.7)" />
+                  <polygon points="24,18 24,42 42,30" fill="white" />
+                </svg>
+              </div>
             </div>
-            {/* <div className={styles.scoutVideoWrapper}>
-              <iframe src="https://www.youtube.com/embed/your-tutorial-video" title="Scout Tutorial" frameBorder="0" allowFullScreen></iframe>
-            </div> */}
+          </div>
+          
+          {/* Scout Information - Side by side layout below video */}
+          <div className={styles.scoutInfoSection}>
+            <div className={styles.scoutImageWrapper}>
+              <Image
+                src="/scout-screenshot.png"
+                alt="Scout Extension Screenshot"
+                width={400}
+                height={300}
+                className={styles.scoutImage}
+              />
+            </div>
+            <div className={styles.scoutInfo}>
+              <h2 className={styles.scoutTitle}>Meet Scout</h2>
+              <ul className={styles.scoutFeatures}>
+                <li>Instantly search across Google, YouTube, Reddit, Wikipedia, and more</li>
+                <li>Lightning-fast keyboard shortcuts for power users</li>
+                <li>Right-click context menu for quick searches</li>
+                <li>Beautiful dark mode and seamless sync across devices</li>
+              </ul>
+              <div className={styles.scoutLinks}>
+                <a 
+                  href="https://chromewebstore.google.com/detail/intelhero-scout/biakpjmflecnjfjmbnnhbagmjijpmbop" 
+                  className={styles.scoutStoreLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={handleScoutClick}
+                >
+                  Get it on Chrome Extension Store
+                </a>
+                {/* <a href="#" className={styles.scoutStoreLink} target="_blank" rel="noopener noreferrer">
+                  Get it on Edge Add-ons
+                </a> */}
+              </div>
+            </div>
           </div>
         </div>
+        
+        {/* Video Modal - Inline for now */}
+        {isVideoModalOpen && (
+          <div 
+            className={styles.modalOverlay} 
+            onClick={() => setIsVideoModalOpen(false)}
+          >
+            <div 
+              className={styles.modalContent}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                className={styles.closeButton} 
+                onClick={() => setIsVideoModalOpen(false)}
+              >
+                ×
+              </button>
+              <div className={styles.videoWrapper}>
+                <iframe
+                  src={`https://www.youtube.com/embed/3q2JyguBlno?autoplay=1`}
+                  title="Scout Extension Demo"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className={styles.modalVideo}
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Section 3: Introduce IntelHero */}
@@ -131,10 +212,20 @@ export default function Home() {
                 placeholder="Enter your email"
                 className={styles.earlyAccessInput}
                 required
+                disabled={isSubmitting}
               />
-              <button type="submit" className={styles.earlyAccessButton}>
-                Request Early Access
+              <button 
+                type="submit" 
+                className={styles.earlyAccessButton}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Signing Up...' : 'Request Early Access'}
               </button>
+              {submitMessage && (
+                <p className={submitMessage.includes('Thanks') ? styles.successMessage : styles.errorMessage}>
+                  {submitMessage}
+                </p>
+              )}
             </form>
           </div>
         </div>
