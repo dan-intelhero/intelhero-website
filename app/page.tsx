@@ -48,7 +48,7 @@ export default function Home() {
       } else {
         setSubmitMessage(data.error || 'Oops! There was a problem. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubmitMessage('Oops! There was a problem. Please try again.');
     } finally {
       setIsSubmitting(false);
