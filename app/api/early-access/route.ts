@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend with fallback for build time
+const resend = new Resend(process.env.RESEND_API_KEY || 'fallback-key-for-build');
 
 export async function POST(request: NextRequest) {
   try {
