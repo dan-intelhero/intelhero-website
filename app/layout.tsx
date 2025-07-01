@@ -1,4 +1,6 @@
 import "./globals.css";
+import Script from 'next/script';
+import React from "react";
 
 // import { Geist, Geist_Mono } from "next/font/google";
 // Font import removed due to missing export in Next.js 15.3.3
@@ -41,6 +43,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-7KMEJMVXMR"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-7KMEJMVXMR', {
+              page_title: document.title,
+              page_location: window.location.href,
+            });
+          `}
+        </Script>
         {children}
       </body>
     </html>

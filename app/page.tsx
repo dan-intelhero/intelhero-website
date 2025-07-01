@@ -1,8 +1,27 @@
+'use client';
+
 import Link from 'next/link';
 import styles from './page.module.css';
 import Image from 'next/image';
+import { trackButtonClick, trackSignup, trackPageVisit } from './lib/gtag';
+import { useEffect } from 'react';
 
 export default function Home() {
+  useEffect(() => {
+    // Track page visit when component mounts
+    trackPageVisit('home');
+  }, []);
+
+  const handleScoutClick = () => {
+    trackButtonClick('scout_chrome_store');
+  };
+
+  const handleEarlyAccessSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    trackSignup();
+    // Add your form submission logic here
+    console.log('Early access form submitted');
+  };
   return (
     <div className="min-h-screen bg-secondary-gray text-primary flex flex-col">
       {/* Section 1: Hero */}
@@ -46,7 +65,13 @@ export default function Home() {
               <li>Beautiful dark mode and seamless sync across devices</li>
             </ul>
             <div className={styles.scoutLinks}>
-              <a href="#" className={styles.scoutStoreLink} target="_blank" rel="noopener noreferrer">
+              <a 
+                href="#" 
+                className={styles.scoutStoreLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={handleScoutClick}
+              >
                 Get it on Chrome Extension Store
               </a>
               {/* <a href="#" className={styles.scoutStoreLink} target="_blank" rel="noopener noreferrer">
@@ -99,7 +124,7 @@ export default function Home() {
             <p className={styles.earlyAccessDescription}>
               Be the first to try IntelHero and get notified when we launch. Sign up below for early access!
             </p>
-            <form className={styles.earlyAccessForm} action="#" method="POST">
+            <form className={styles.earlyAccessForm} onSubmit={handleEarlyAccessSubmit} method="POST">
               <input
                 type="email"
                 name="email"
