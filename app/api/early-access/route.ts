@@ -22,7 +22,10 @@ export async function POST(request: NextRequest) {
 
     // Send email notification to dan@intelhero.com
     try {
-      if (process.env.RESEND_API_KEY) {
+      const apiKey = process.env.RESEND_API_KEY;
+      console.log('API Key status:', apiKey ? 'Present' : 'Missing', apiKey?.substring(0, 8) + '...');
+      
+      if (apiKey && apiKey !== 'fallback-key-for-build') {
         const emailResult = await resend.emails.send({
           from: 'Dan @ IntelHero <noreply@intelhero.com>',
           to: ['dan@intelhero.com'],
@@ -39,7 +42,8 @@ export async function POST(request: NextRequest) {
         });
         console.log('Email notification sent successfully:', emailResult);
       } else {
-        console.warn('RESEND_API_KEY not configured, skipping email notification');
+        console.warn('RESEND_API_KEY not configured properly, skipping email notification');
+        console.warn('Current API key value:', apiKey);
       }
     } catch (emailError) {
       console.error('Failed to send email notification:', emailError);
