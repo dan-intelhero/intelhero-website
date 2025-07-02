@@ -27,8 +27,10 @@ export default function handler(req, res) {
       updated: new Date().toISOString(),
       header: {
         tagline: {
-          text: "Copy/paste is so 2024. IntelHero is 2025.",
-          link: "https://intelhero.com/early-access"
+    //      text: "Copy/paste is so 2024. IntelHero is 2025.",
+    //      link: "https://intelhero.com/early-access"
+          text: "Thanks! Watch the tutorial.",
+          link: "https://www.youtube.com/watch?v=3q2JyguBlno"
         }
       }
     };
