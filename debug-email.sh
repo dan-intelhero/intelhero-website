@@ -19,7 +19,7 @@ echo
 
 echo "3. ⚙️ CHECK ENVIRONMENT VARIABLES:"
 echo "   • In Vercel dashboard, go to Settings → Environment Variables"
-echo "   • Ensure RESEND_API_KEY is set to: re_iiE75oyn_97BhJC8Y3A5gNwhMGCZWHPDS"
+echo "   • Ensure RESEND_API_KEY is set to your actual Resend API key"
 echo
 
 echo "4. 🧪 TEST API DIRECTLY:"
